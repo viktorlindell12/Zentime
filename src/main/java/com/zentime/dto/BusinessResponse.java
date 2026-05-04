@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.time.Instant;
 
+/** Response body for business endpoints. */
 @Getter
 @AllArgsConstructor
 public class BusinessResponse {

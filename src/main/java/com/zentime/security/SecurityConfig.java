@@ -20,6 +20,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * Stateless Spring Security configuration using JWT.
+ * Method-level authorization ({@code @PreAuthorize}) is enabled via {@code @EnableMethodSecurity}.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity

@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
+/** Request body for {@code POST /businesses}. */
 @Getter
 @Setter
 public class BusinessRequest {

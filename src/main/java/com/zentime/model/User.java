@@ -14,6 +14,10 @@ import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * Persisted user account. Implements {@link UserDetails} so Spring Security
+ * can use it directly — no separate adapter needed.
+ */
 @Entity
 @Table(name = "users")
 @Getter
