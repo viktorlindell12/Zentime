@@ -12,6 +12,6 @@ CREATE TABLE bookings (
     created_at  TIMESTAMPTZ    NOT NULL DEFAULT now(),
     CONSTRAINT no_overlap EXCLUDE USING gist (
         service_id WITH =,
-        tsrange(start_time, end_time) WITH &&
+        tstzrange(start_time, end_time) WITH &&
     ) WHERE (status = 'BOOKED')
 );
