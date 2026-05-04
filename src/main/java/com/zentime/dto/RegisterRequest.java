@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+/** Request body for {@code POST /auth/register}. */
 @Getter
 @Setter
 public class RegisterRequest {

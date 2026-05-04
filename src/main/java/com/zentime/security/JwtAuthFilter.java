@@ -16,6 +16,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+/**
+ * Intercepts every request once, extracts the Bearer JWT from the Authorization header,
+ * and populates the {@link SecurityContextHolder} when the token is valid.
+ * Requests without a valid token pass through unauthenticated — access control
+ * is enforced downstream by Spring Security's authorization rules.
+ */
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
@@ -33,9 +39,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             return;
         }
 
-        String token = header.substring(7);
+        String token = header.substring(7); // strip "Bearer " prefix
         String username = jwtService.extractUsername(token);
 
+        // Only authenticate if not already set — avoids overwriting an existing session
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userRepository.findByEmail(username).orElse(null);
             if (userDetails != null && jwtService.isTokenValid(token, userDetails)) {

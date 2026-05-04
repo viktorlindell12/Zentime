@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
+/** Request body for {@code POST /auth/login}. */
 @Getter
 @Setter
 public class LoginRequest {
